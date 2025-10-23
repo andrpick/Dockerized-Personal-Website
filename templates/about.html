@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Andrew Pickering's Personal Website</title>
+    <link rel="stylesheet" href="{{ url_for('css', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="nav-bar">
+            <div class="brand"><a href="{{ url_for('index') }}">Andrew <span>Pickering</span></a></div>
+            <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Me</a></li>
+                <li><a href="{{ url_for('resume') }}">Resume</a></li>
+                <li><a href="{{ url_for('projects') }}">Projects</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-hero">
+            <h1>About Me</h1>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>My Story</h2>
+                    <p>I'm Andrew Pickering, a passionate graduate student pursuing my Master of Science in Information Systems (MSIS) at Indiana University's Kelley School of Business. I'm a graduate of Kelley with a B.S. in Information Systems and Business Analytics, and I'm currently pursuing my M.S. in Information Systems with an expected graduation in May 2026.</p>
+                    
+                    <h3>Background</h3>
+                    <p>Throughout my academic journey, I've developed a strong foundation at the intersection of business and technology. I'm passionate about using technology to drive operational efficiency, solve complex problems, and foster innovation. My experience spans from data analysis and visualization to process improvement and stakeholder communication.</p>
+                    
+                    <h3>Interests & Goals</h3>
+                    <p>I'm particularly interested in:</p>
+                    <ul>
+                        <li>Data Analytics and Business Intelligence</li>
+                        <li>Artificial Intelligence and Machine Learning applications</li>
+                        <li>Digital transformation and process optimization</li>
+                        <li>Cybersecurity and information governance</li>
+                        <li>Project management and agile methodologies</li>
+                    </ul>
+                    
+                    <p>As I prepare for graduation next May, I'm actively exploring full-time opportunities where I can apply my skills and continue growing in a dynamic environment. I'm also eager to connect with industry professionals and peers to expand my network.</p>
+                </div>
+                <div class="about-image">
+                    <img src="{{ url_for('images', filename='al28281_A1101360-a.jpg') }}" alt="Professional headshot of Andrew Pickering" class="profile-photo">
+                    <p class="image-caption">Andrew Pickering - MSIS Graduate Student</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-interests">
+            <h2>Skills & Interests</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Business Intelligence & Reporting</h3>
+                    <ul>
+                        <li>Excel, PowerPoint, Power BI, Tableau, SQL, DAX</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Python, R, HTML, CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Technical Proficiency</h3>
+                    <ul>
+                        <li>Computer hardware assembly and troubleshooting</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Additional</h3>
+                    <ul>
+                        <li>Proficient in American Sign Language</li>
+                        <li>Interests: Sports, Traveling, Personal Finance, New Technology, History, Aviation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Andrew Pickering's Personal Website. All rights reserved.</p>
+        <p>Built with HTML, CSS, and AI assistance</p>
+    </footer>
+</body>
+<script src="{{ url_for('script_js') }}"></script>
+</html>
+
+

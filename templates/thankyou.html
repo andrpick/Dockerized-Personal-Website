@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Andrew Pickering's Personal Website</title>
+    <link rel="stylesheet" href="{{ url_for('css', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="nav-bar">
+            <div class="brand"><a href="{{ url_for('index') }}">Andrew <span>Pickering</span></a></div>
+            <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Me</a></li>
+                <li><a href="{{ url_for('resume') }}">Resume</a></li>
+                <li><a href="{{ url_for('projects') }}">Projects</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="thank-you-hero">
+            <div class="thank-you-content">
+                <h1>Thank You!</h1>
+                <div class="success-icon">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" fill="#4CAF50"/>
+                        <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <p class="thank-you-message">
+                    Your message has been successfully sent! I appreciate you taking the time to reach out to me.
+                </p>
+                <p class="response-info">
+                    I'll review your message and get back to you within 24 hours. In the meantime, feel free to explore more of my website or connect with me on social media.
+                </p>
+                
+                <div class="next-steps">
+                    <h2>What's Next?</h2>
+                    <div class="next-steps-grid">
+                        <div class="next-step">
+                            <h3>Explore My Work</h3>
+                            <p>Check out my projects and see what I've been working on</p>
+                            <a href="{{ url_for('projects') }}" class="btn primary">View Projects</a>
+                        </div>
+                        <div class="next-step">
+                            <h3>Learn About Me</h3>
+                            <p>Get to know more about my background and interests</p>
+                            <a href="{{ url_for('about') }}" class="btn secondary">About Me</a>
+                        </div>
+                        <div class="next-step">
+                            <h3>View My Resume</h3>
+                            <p>See my professional experience and qualifications</p>
+                            <a href="{{ url_for('resume') }}" class="btn secondary">View Resume</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <h3>Connect With Me</h3>
+                    <div class="social-buttons">
+                        <a href="https://linkedin.com/in/andrewpickering-" target="_blank" class="social-btn linkedin">LinkedIn</a>
+                        <a href="https://github.com/andrpick" target="_blank" class="social-btn github">GitHub</a>
+                        <a href="mailto:andrewrpick@gmail.com" class="social-btn email">Email</a>
+                    </div>
+                </div>
+
+                <div class="return-home">
+                    <a href="{{ url_for('index') }}" class="btn primary large">Return to Homepage</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Andrew Pickering's Personal Website. All rights reserved.</p>
+        <p>Built with HTML, CSS, and AI assistance</p>
+    </footer>
+</body>
+<script src="{{ url_for('script_js') }}"></script>
+</html>
+
+

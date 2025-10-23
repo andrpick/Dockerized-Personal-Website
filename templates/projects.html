@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Andrew Pickering's Personal Website</title>
+    <link rel="stylesheet" href="{{ url_for('css', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="nav-bar">
+            <div class="brand"><a href="{{ url_for('index') }}">Andrew <span>Pickering</span></a></div>
+            <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Me</a></li>
+                <li><a href="{{ url_for('resume') }}">Resume</a></li>
+                <li><a href="{{ url_for('projects') }}">Projects</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="projects-hero">
+            <h1>My Projects</h1>
+            <p>Here are some of the projects I've worked on that demonstrate my skills in information systems, data analysis, process improvement, and business intelligence.</p>
+        </section>
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message flash-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <div class="projects-actions">
+            <a href="{{ url_for('add_project') }}" class="btn primary">Add New Project</a>
+        </div>
+
+        <section class="projects-table-section">
+            <h2>My Projects</h2>
+            {% if projects %}
+                <table class="projects-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for project in projects %}
+                        <tr>
+                            <td>
+                                <img src="{{ url_for('images', filename=project[3]) }}" 
+                                     alt="{{ project[1] }}" 
+                                     class="project-table-image"
+                                     onclick="openModal(this)">
+                            </td>
+                            <td>{{ project[1] }}</td>
+                            <td>{{ project[2] }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                                        ⋯
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a href="{{ url_for('edit_project', project_id=project[0]) }}" 
+                                           class="dropdown-item edit-item">
+                                            <span>✏️</span> Edit
+                                        </a>
+                                        <a href="{{ url_for('delete_project', project_id=project[0]) }}" 
+                                           class="dropdown-item delete-item" 
+                                           onclick="return confirm('Are you sure you want to delete this project?')">
+                                            <span>🗑️</span> Delete
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="no-projects">
+                    <p>No projects found. <a href="{{ url_for('add_project') }}">Add your first project!</a></p>
+                </div>
+            {% endif %}
+        </section>
+
+        <section class="additional-projects">
+            <h2>Additional Work</h2>
+            <div class="mini-projects">
+                <div class="mini-project">
+                    <h3>Personal Website (This Site)</h3>
+                    <p>HTML, CSS, JavaScript</p>
+                    <p>A responsive personal website showcasing my portfolio and skills, built with modern web technologies and AI assistance.</p>
+                </div>
+                <div class="mini-project">
+                    <h3>Bike Rental Program Management</h3>
+                    <p>Program Management, Education, Community Engagement</p>
+                    <p>Oversaw bike rental initiative, educating students on bike handling and maintenance, preparing them for Little 500 participation.</p>
+                </div>
+                <div class="mini-project">
+                    <h3>Commercial Driving Operations</h3>
+                    <p>Logistics, Operations Management, Safety</p>
+                    <p>Managed complex warehouse operations and commercial driving across central Indiana, handling thousands of pounds of ice with exceptional work ethic.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Andrew Pickering's Personal Website. All rights reserved.</p>
+        <p>Built with HTML, CSS, and AI assistance</p>
+    </footer>
+</body>
+<script src="{{ url_for('script_js') }}"></script>
+</html>
+
+

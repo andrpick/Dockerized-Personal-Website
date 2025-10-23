@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project - Andrew Pickering's Personal Website</title>
+    <link rel="stylesheet" href="{{ url_for('css', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="nav-bar">
+            <div class="brand"><a href="{{ url_for('index') }}">Andrew <span>Pickering</span></a></div>
+            <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Me</a></li>
+                <li><a href="{{ url_for('resume') }}">Resume</a></li>
+                <li><a href="{{ url_for('projects') }}">Projects</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="add-project-hero">
+            <h1>Add New Project</h1>
+        </section>
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message flash-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <section class="add-project-form">
+            <form method="POST" action="{{ url_for('add_project') }}">
+                <div class="form-group">
+                    <label for="title">Project Title *</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Project Description *</label>
+                    <textarea id="description" name="description" rows="5" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="image_filename">Image Filename *</label>
+                    <input type="text" id="image_filename" name="image_filename" required 
+                           placeholder="e.g., project-screenshot.jpg">
+                    <small>Note: Upload your image to the static/images folder first, then enter the filename here.</small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn primary">Add Project</button>
+                    <a href="{{ url_for('projects') }}" class="btn secondary">Cancel</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Andrew Pickering's Personal Website. All rights reserved.</p>
+        <p>Built with HTML, CSS, and AI assistance</p>
+    </footer>
+
+    <script src="{{ url_for('script_js') }}"></script>
+</body>
+</html>
